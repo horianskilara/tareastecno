@@ -1,9 +1,8 @@
 int pantalla = 0;
 int py = 480;
 String texto = "";
-PFont fuente;
-PImage logo, fondo, img1, img2, img3, img4, img5, img7, img8;
-
+PFont FontBold;
+PImage logo, fondo, img1, img2, img3, img4, img5, img6;
 void setup () {
   size (500, 500);
 
@@ -11,21 +10,24 @@ void setup () {
   logo = loadImage ("logo.png");
   img1 = loadImage ("img1.png");
   img2 = loadImage ("img2.png");
-  img3 = loadImage ("img3.png");
+  img3 = loadImage ("img4.png");
+  img4 = loadImage ("img8.png");
+  img5 = loadImage ("img7.png");
+  img6 = loadImage ("img9.png");
 
-  //fuente = createFont(FontBold, 30);
 
-  fuente = loadFont("fuente1.vlw");
+
+  FontBold = createFont("FontBold.otf", 18);
   textAlign(CENTER, TOP);
-  textFont(fuente);
+  textFont(FontBold);
 }
 
 void draw() {
 
   background(0);
 
-  if (py >= 0 && pantalla < 4) {
-    py = py-5;
+  if (py >= 0 && pantalla < 6) {
+    py = py-6;
   } else {
     py = height;
   } 
@@ -37,15 +39,12 @@ void draw() {
 
 
 
+
   if (pantalla == 0 ) {
     image(fondo, 0, 0, width, height);
     image (logo, 50, py, 400, 100);
-    if (py <= 200) {
-      py = 200;
-    }
   } else if (pantalla == 1) {
     image(img1, 0, 0, width, height);
-    textSize(22);
     text (texto, 140, py);
     fill(255);
     texto = "ORIGINAL CONCEPT \n Hajime Yatate";
@@ -53,94 +52,49 @@ void draw() {
     texto = "SERIES STORY EDITOR \n Keiko Nobumoto";
     text (texto, 140, py-200);
     texto = "SET DESIGNER \n Isamu Imakake";
-  } 
-  if (pantalla == 2) {
+  } else if (pantalla == 2) {
     image(img2, 0, 0, width, height);
-    textSize(22);
-    text (texto, 140, py);
+    text (texto, 360, py);
     fill(255);
     texto = "MUSIC PRODUCER \n Toshiaki Ohta";
-    text (texto, 140, py-100);
+    text (texto, 360, py-90);
     texto = "MUSIC DIRECTORS \n Shiro Sasaki \n Yukako Inoue";
-    text (texto, 140, py-150);
+    text (texto, 360, py-200);
     texto = "MUSIC PRODUCED BY \n Victor Entertainment";
   } else if (pantalla == 3) {
     image(img3, 0, 0, width, height);
-    textSize(22);
-    text (texto, 140, py);
+    text (texto, 120, py);
     fill(255);
-    texto = "MUSIC PRODUCER \n Toshiaki Ohta";
-    text (texto, 140, py-100);
-    texto = "MUSIC DIRECTORS \n Shiro Sasaki \n Yukako Inoue";
-    text (texto, 140, py-200);
-    texto = "MUSIC PRODUCED BY \n Victor Entertainment";
+    texto = "MECHANICAL \n DESIGNER \n Kimitoshi Yamane";
+    text (texto, 120, py-100);
+    texto = "SOUND DIRECTOR \n Katsuyoshi \n Kobayashi";
+  } else if (pantalla == 4) {
+    image(img4, 0, 0, width, height);
+    text (texto, 120, py);
+    fill(255);
+    texto = "OPENING SONG \n ´Tank!´";
+    text (texto, 120, py-100);
+    texto = "MUSIC BY \n Yoko Kanno";
+    text (texto, 120, py-200);
+    texto = "PERFORMED BY \n Seatbelts";
+  } else if (pantalla == 5) {
+    image(img5, 0, 0, width, height);
+    text (texto, 390, py);
+    fill(255);
+    texto = "A PRODUCTION OF \n Sunrise \n Bandai Visual";
+  } else if (pantalla == 6) {
+    image(img6, 0, 0, width, height);
+    println("ENTER TO RESTART");
   }
-}
+
+  println("Pantalla: " + pantalla);
+  println ("Ubicacion: " + mouseX, mouseY);
+  println("Py: " + py);
+} 
 
 void keyPressed() {
-  if (keyCode == ENTER && pantalla == 0 && py == 200) {
-    py = height;
+  if (keyCode == ENTER && pantalla == 6) {
 
-    pantalla++;
+    pantalla = 0;
   }
-}
-
-
-  if (pantalla == 0 ) {
-    image(fondo, 0, 0, width, height);
-    image (logo, 50, py, 400, 100);
-    if (py <= 200){
-      py = 200;
-    
-   } 
-  }
- 
-
-else if (pantalla == 1){
-    image(img1, 0, 0, width, height);
-    textSize(22);
-    text (texto, 140, py);
-    fill(255);
-    texto = "ORIGINAL CONCEPT \n Hajime Yatate";
-    text (texto, 140, py-100);
-    texto = "SERIES STORY EDITOR \n Keiko Nobumoto";
-    text (texto, 140, py-200);
-    texto = "SET DESIGNER \n Isamu Imakake"; 
-
-}
-
-else if (pantalla == 2){
-    image(img2, 0, 0, width, height);
-    textSize(22);
-    text (texto, 140, py);
-    fill(255);
-    texto = "MUSIC PRODUCER \n Toshiaki Ohta";
-    text (texto, 140, py-100);
-    texto = "MUSIC DIRECTORS \n Shiro Sasaki \n Yukako Inoue";
-    text (texto, 140, py-200);
-    texto = "MUSIC PRODUCED BY \n Victor Entertainment";
-
-}
-  
-  else if (pantalla == 3){
-    image(img3, 0, 0, width, height);
-    textSize(22);
-    text (texto, 140, py);
-    fill(255);
-    texto = "MUSIC PRODUCER \n Toshiaki Ohta";
-    text (texto, 140, py-100);
-    texto = "MUSIC DIRECTORS \n Shiro Sasaki \n Yukako Inoue";
-    text (texto, 140, py-200);
-    texto = "MUSIC PRODUCED BY \n Victor Entertainment";
-
-}
-}
-
-void keyPressed(){
-  if (keyCode == ENTER && pantalla == 0 && py == 200){
-    pantalla++;
-    py = height;
-  }
-
-
 }
